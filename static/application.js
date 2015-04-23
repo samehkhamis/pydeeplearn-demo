@@ -9,31 +9,51 @@ $(function() {
     var drawing = false;
     var prevX, prevY;
     
-    context.lineWidth = 10;
+    context.lineWidth = 12;
     context.strokeStyle = 'black';
     context.stroke();
     
     // Drawing functions
-    $("#canvas").mousedown(function(e) {
+    var drawstart = function(e) {
         var x = e.pageX - offset.left;
         var y = e.pageY - offset.top;
-        
         drawing = true;
         context.beginPath();
         context.moveTo(x, y);
-    });
+    }
     
-    $('#canvas').mousemove(function(e) {
+    var drawmove = function(e) {
         if (drawing) {
             var x = e.pageX - offset.left;
             var y = e.pageY - offset.top;
             context.lineTo(x, y);
             context.stroke();
         }
+    }
+    
+    var drawend = function(e) { drawing = false; }
+    
+    $("#canvas").mousedown(drawstart);
+    $("#canvas").on('touchstart', function(e) {
+        drawstart(e.originalEvent.touches[0]);
+        e.stopPropagation();
+        e.preventDefault();
     });
     
-    $("#canvas").mouseup(function(e) { drawing = false; });
-    $('#canvas').mouseleave(function(e){ drawing = false; });
+    $('#canvas').mousemove(drawmove);
+    $('#canvas').on('touchmove', function(e) {
+        drawmove(e.originalEvent.touches[0]);
+        e.stopPropagation();
+        e.preventDefault();
+    });
+    
+    $("#canvas").mouseup(drawend);
+    $('#canvas').mouseleave(drawend);
+    $('#canvas').on('touchend', function(e) {
+        drawend(e.originalEvent.touches[0]);
+        e.stopPropagation();
+        e.preventDefault();
+    });
     
     // Recognize digit
     $("#btn-recognize").click(function(e) {
