@@ -20,6 +20,7 @@ $(function() {
         drawing = true;
         context.beginPath();
         context.moveTo(x, y);
+        return false;
     }
     
     var drawmove = function(e) {
@@ -29,30 +30,25 @@ $(function() {
             context.lineTo(x, y);
             context.stroke();
         }
+        return false;
     }
     
-    var drawend = function(e) { drawing = false; }
+    var drawend = function(e) { drawing = false; return false; }
     
     $("#canvas").mousedown(drawstart);
     $("#canvas").on('touchstart', function(e) {
-        drawstart(e.originalEvent.touches[0]);
-        e.stopPropagation();
-        e.preventDefault();
+        return drawstart(e.originalEvent.touches[0]);
     });
     
     $('#canvas').mousemove(drawmove);
     $('#canvas').on('touchmove', function(e) {
-        drawmove(e.originalEvent.touches[0]);
-        e.stopPropagation();
-        e.preventDefault();
+        return drawmove(e.originalEvent.touches[0]);
     });
     
     $("#canvas").mouseup(drawend);
     $('#canvas').mouseleave(drawend);
     $('#canvas').on('touchend', function(e) {
-        drawend(e.originalEvent.touches[0]);
-        e.stopPropagation();
-        e.preventDefault();
+        return drawend(e.originalEvent.touches[0]);
     });
     
     // Recognize digit
