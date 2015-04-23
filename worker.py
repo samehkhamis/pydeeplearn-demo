@@ -1,6 +1,6 @@
 import os, redis
 from rq import get_current_job, Worker, Queue, Connection
-from PIL import Image, ImageFilter
+from PIL import Image
 from io import BytesIO
 import base64
 import numpy as np
