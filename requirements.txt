@@ -1,0 +1,8 @@
+Flask==0.10.1
+numpy==1.9.1
+pillow==2.8.1
+redis==2.10.3
+rq==0.5.2
+gunicorn==19.3.0
+cython==0.19.1
+gevent==1.0.1

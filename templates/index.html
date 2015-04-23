@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Sameh Khamis" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+<link rel="stylesheet" href="{{url_for('static', filename='application.css') }}" />
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script type="text/javascript" src="{{url_for('static', filename='application.js') }}"></script>
+<title>pydeeplearn demo</title>
+</head>
+
+<body>
+<div class="container">
+<div class="row center-block">
+<div class="col-lg-12 col-md-12 col-xs-11">
+<div class="jumbotron">
+<h1 class="text-center">pydeeplearn demo</h1>
+</div>
+
+<div class="row text-center ">
+<div class="col-lg-12 col-md-12 col-xs-11">
+<h2>Draw a single-digit number [0..9]</h2>
+<canvas id="canvas" width="200" height="200">
+Why are you using a browser that doesn't support the HTML5 canvas tag?!
+</canvas>
+<h3>Result: <span id="result">...</span></h3>
+<a class="btn btn-success btn-lg" href="#" role="button" id="btn-recognize">Recognize</a>
+<a class="btn btn-danger btn-lg" href="#" role="button" id="btn-clear">Clear</a>
+</div></div>
+</div>
+<div class="row text-center">
+<div class="extra-margin col-lg-12 col-md-12 col-xs-11">
+<p>This is a Python implementation of <a href="http://yann.lecun.com/exdb/mnist/">LeNet</a> using <a href="https://github.com/samehkhamis/pydeeplearn">pydeeplearn</a> and trained on <a href="{{url_for('static', filename='mnist.jpg') }}">MNIST</a>.</p>
+<p>&copy; Sameh Khamis</p>
+</div></div>
+</div>
+</div>
+</body>
+</html>

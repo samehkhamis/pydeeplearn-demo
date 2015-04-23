@@ -1,0 +1,4 @@
+**/image.pyd
+**/image.cpp
+**/build/
+**/*.pyc

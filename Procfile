@@ -1,0 +1,1 @@
+web: make && (python worker.py &) && gunicorn application --log-file=-
