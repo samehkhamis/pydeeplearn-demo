@@ -8,6 +8,7 @@ from pydeeplearn.net.cnn import CNN
 
 pretrained_lenet = os.getenv('PRETRAINED_LENET', '/app/mnist.pkl')
 cnn = CNN.load(pretrained_lenet)
+nruns = 4
 
 def recognize(imb64):
     imb64 = imb64[imb64.find('base64,') + 7:]
@@ -15,7 +16,9 @@ def recognize(imb64):
     _, _, _, im = im.split()
     im.thumbnail((28, 28), Image.ANTIALIAS)
     arr = np.array(im).reshape(28, 28, 1)
-    scores = cnn.predict(arr)
+    scores = np.zeros((1, 10))
+    for run in np.arange(nruns):
+        scores += cnn.predict(arr) / nruns
     result = scores.argmax()
     
     # save the results
