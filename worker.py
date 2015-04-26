@@ -14,8 +14,8 @@ def recognize(imb64):
     im = Image.open(BytesIO(base64.decodestring(imb64)))
     _, _, _, im = im.split()
     im.thumbnail((28, 28), Image.ANTIALIAS)
-    arr = np.array(im)
-    scores = cnn.predict(arr.reshape(arr.shape[0], arr.shape[1], 1))
+    arr = np.array(im).reshape(28, 28, 1)
+    scores = cnn.predict(arr)
     result = scores.argmax()
     
     # save the results
