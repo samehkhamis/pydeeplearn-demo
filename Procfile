@@ -1,1 +1,2 @@
-web: make && (python worker.py &) && gunicorn application --log-file=-
+web: make && gunicorn application --log-file=-
+worker: make && python worker.py
