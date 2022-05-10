@@ -1,6 +1,6 @@
 Flask==0.10.1
 numpy==1.9.1
-pillow==2.8.1
+pillow==9.0.1
 redis==2.10.3
 rq==0.5.2
 gunicorn==19.3.0
